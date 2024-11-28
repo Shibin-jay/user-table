@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heading {
+    text-align: center;
+    color: #5d5d5d;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .filter-input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .filter-input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .sort-buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .sort-btn {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sort-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .user-table th {
+    background-color: black;
+    color: white;
+  }
+  
+  .user-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .user-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .user-table td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 90%;
+      padding: 10px;
+    }
+  
+    .filter-container {
+      justify-content: center;
+    }
+  
+    .filter-input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .sort-buttons {
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+  
+    .sort-btn {
+      width: 100%;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  
+    .user-table th, .user-table td {
+      padding: 8px;
+    }
+  
+    .user-table td {
+      word-wrap: break-word;
+    }
+  }
+  
+  @media screen and (max-width< 480px) {
+    .user-table th, .user-table td {
+      padding: 6px;
+    }
+  
+    .user-table td {
+      font-size: 14px;
+    }
+  
+    .filter-input {
+      width: 100%;
+    }
+  
+    .sort-btn {
+      font-size: 12px;
+    }
+  }
+  
