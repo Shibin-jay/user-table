@@ -7,12 +7,19 @@ const UserTable = () => {
   const [searchCity, setSearchCity] = useState("");
   const [nameSortOrder, setNameSortOrder] = useState("asc");
   const [idSortOrder, setIdSortOrder] = useState("asc");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.error("Error fetching data:", error));
+      .then((response) => {
+        setUsers(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
   }, []);
 
   const handleNameSort = () => {
@@ -49,7 +56,6 @@ const UserTable = () => {
     <div className="container">
       <h1 className="heading">User Table</h1>
 
-      {/* Filter Input */}
       <div className="filter-container">
         <input
           type="text"
@@ -60,7 +66,6 @@ const UserTable = () => {
         />
       </div>
 
-      {/* Sort Buttons */}
       <div className="sort-buttons">
         <button className="sort-btn" onClick={handleNameSort}>
           Sort by Name ({nameSortOrder === "asc" ? "Ascending" : "Descending"})
@@ -70,27 +75,34 @@ const UserTable = () => {
         </button>
       </div>
 
-      {/* User Table */}
-      <table className="user-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>City</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.username}</td>
-              <td>{user.address.city}</td>
+      {isLoading ? (
+        <p className="message">Loading data...</p>
+      ) : users.length === 0 ? (
+        <p className="message">No data available</p>
+      ) : filteredUsers.length === 0 ? (
+        <p className="message">No results found</p>
+      ) : (
+        <table className="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>City</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.username}</td>
+                <td>{user.address.city}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
